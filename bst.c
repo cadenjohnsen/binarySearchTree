@@ -29,7 +29,9 @@ struct bst {
 	struct bst_node* root;
 };
 
-
+/*
+ * This function creates a binary search tree.
+ */
 struct bst* bst_create() {
 	struct bst* bst = malloc(sizeof(struct bst));
 	assert(bst);
@@ -37,7 +39,9 @@ struct bst* bst_create() {
 	return bst;
 }
 
-
+/*
+ * Free all of the allocated memory used by the bst.
+ */
 void bst_free(struct bst* bst) {
 	assert(bst);
 
@@ -446,7 +450,6 @@ int bst_path_sum(int sum, struct bst* bst) {
 	else {
 		return bst_path_sum2(bst->root, num, sum, &contained);
 	}
-	//return 0;
 }
 
 
@@ -481,9 +484,6 @@ struct bst_iterator* bst_iterator_create(struct bst* bst) {
  *   iter - the iterator whose memory is to be freed.  May not be NULL.
  */
 void bst_iterator_free(struct bst_iterator* iter) {
-	for(int i = 0; i < iter->size; i++) {
-		//free(iter->stack[i]);
-	}
 	free(iter);
 }
 
@@ -542,7 +542,6 @@ int bst_iterator_next(struct bst_iterator* iter) {
 			stack_push(iter->stack1, stack_pop(iter->stack2));
 		}
 		stack_pop(iter->stack1);
-		//stack_push(iter->stack2, stack_pop(iter->stack1));
 	}
 
 	s = stack_pop(iter->stack1);
